@@ -84,7 +84,7 @@ if not duplicate:
     #    - Print the total number of students in the system
     #    - Print the newly added student record
 
-print("\n Student successfully added!")                #  the confirmation message
+print(" Student successfully added! ")                #  the confirmation message
 print("Total number of students:", len(students))        # total number of students # len determines the number of students
 print("New Student Record:")                              #  the newly added student record
 print(new_student)
