@@ -37,82 +37,27 @@
     #    - Primary Email
     #    - Secondary Email
 
-students = []   # This is the main list of students
+students = []   # this is the main list of students
 #open brackets so I can use later
 
-cps_id = input("CPS ID: ").strip()                  # CPS ID 
-first_name = input("First Name: ").strip().title()   # First Name
-last_name = input("Last Name: ").strip().title()     # Last Name
-middle_name = input("Middle Name: ").strip().title() # Middle Name
-homeroom = input("Homeroom: ").strip()               # Homeroom
-grade = input("Grade Level: ").strip()               # Grade Level
-primary_email = input("Primary Email: ").strip()     # Primary Email
-secondary_email = input("Secondary Email: ").strip() # Secondary Email
+cps_id = input("CPS ID: ")                 # cps id
+first_name = input("First Name: ")   # first namee
+last_name = input("Last Name: ")     # last name
+middle_name = input("Middle Name: ") # middle name
+homeroom = input("Homeroom: ")           # Homeroom
+grade = input("Grade Level: ")             # Grade Level
+primary_email = input("Primary Email: ")     # primary email
+secondary_email = input("Secondary Email: ") # secondary email
 
-
-
-# 2. Combine the First and Last name into this format:
-    #    "Last, First"  
-
-
-
-# 3. Store all of the new information into ONE dictionary
-    #    that matches the structure of the existing student data.
-
-# 4. Add (append) that new dictionary into the main students list.
-
-# 5. After adding the student, the program must:
-    #    - Print a confirmation message
-    #    - Print the total number of students in the system
-    #    - Print the newly added student record
-
-# 6. The program must NOT delete or overwrite any existing students.
-# 7. If the CPS ID already exists in the system:
-        #    - Do NOT add the student
-        #    - Display an error message saying the CPS ID is already taken
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-students = []   # This is the main list of students
-#open brackets so I can use later
-
-cps_id = input("CPS ID: ").strip()                  # CPS ID
-first_name = input("First Name: ").strip().title()   # First Name
-last_name = input("Last Name: ").strip().title()     # Last Name
-middle_name = input("Middle Name: ").strip().title() # Middle Name
-homeroom = input("Homeroom: ").strip()               # Homeroom
-grade = input("Grade Level: ").strip()               # Grade Level
-primary_email = input("Primary Email: ").strip()     # Primary Email
-secondary_email = input("Secondary Email: ").strip() # 5Secondary Email
-
-#use .strip() and .title() to clean and make the data neater
-#.strip() removes extra whitespace from the beginning or end of the input
-#.title() Captilaizes first letter of each world 
 #use a bunch of variable names
-# i use input because Im asking the user to type something
+# i used input because Im asking the user to type something
 
 
 
 # 2. Combine the First and Last name into this format:
     #    "Last, First"  
-
 full_name = f"{last_name}, {first_name}"
-#used an f string to be able to insert variavbles into a string
+#used an f string to be able to insert variable into a string
 
 
 # 3. Store all of the new information into ONE dictionary
@@ -129,20 +74,24 @@ new_student = {
 #here i create a dictionary full of keys that describes the type of data
 
 # 4. Add (append) that new dictionary into the main students list.
-duplicate = False #we assume that a duplicate is false
+duplicate = False #we are assuming that a duplicate is false
 if not duplicate:
     students.append(new_student) #i use append to add new item at the end of the list
-                                # new_student is the new dictionary into main students list
+                                # new_student is the new dictionary into main student list
 
 # 5. After adding the student, the program must:
     #    - Print a confirmation message
     #    - Print the total number of students in the system
     #    - Print the newly added student record
-print("\n Student successfully added!")                # 5.a Confirmation message
-print("Total number of students:", len(students))        # 5.b Total number of students
-print("New Student Record:")                              # 5.c Newly added student record
+
+print("\n Student successfully added!")                #  the confirmation message
+print("Total number of students:", len(students))        # total number of students # len determines the number of students
+print("New Student Record:")                              #  the newly added student record
 print(new_student)
+
+
 # 6. The program must NOT delete or overwrite any existing students.
+
 # 7. If the CPS ID already exists in the system:
         #    - Do NOT add the student
         #    - Display an error message saying the CPS ID is already taken
