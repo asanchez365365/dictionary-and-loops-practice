@@ -133,3 +133,64 @@
 # - The program must not crash if the nurse types a name incorrectly
 # - The program must display a clear error message instead
 
+
+
+
+patients = []
+
+# 1. Ask the user for patient information
+
+patient_id = input("Patient ID: ").strip()
+first_name = input("First Name: ").strip().title()
+last_name = input("Last Name: ").strip().title()
+age = input("Age: ").strip()
+room_number = input("Room Number: ").strip()
+assigned_doctor = input("Assigned Doctor: ").strip().title()
+triage_level = input("Triage Level (1-5): ").strip()
+status = input("Current Status (Waiting / In Treatment / Discharged): ").strip().title()
+primary_email = input("Primary Contact Email: ").strip()
+secondary_email = input("Secondary Contact Email: ").strip()
+
+# 2. Combine First and Last name → "Last, First"
+
+full_name = f"{last_name}, {first_name}"
+
+
+# 3. Store all info into ONE dictionary
+
+new_patient = {
+    "patient_id": patient_id,
+    "name": full_name,
+    "age": age,
+    "room_number": room_number,
+    "assigned_doctor": assigned_doctor,
+    "triage_level": triage_level,
+    "status": status,
+    "primary_email": primary_email,
+    "secondary_email": secondary_email
+}
+
+
+# 4. Add patient ONLY if ID is unique
+
+duplicate = any(patient["patient_id"] == patient_id for patient in patients)
+
+
+# 5. Confirmation / Output
+
+if not duplicate:
+    patients.append(new_patient)
+
+    print("\n✅ Patient successfully added!")
+    print("Total number of patients:", len(patients))
+    print("New Patient Record:")
+    print(new_patient)
+
+# 6. Existing patients are NOT overwritten
+
+# (append only adds new data)
+
+# 7. Duplicate ID protection
+
+else:
+    print("ERROR: Patient ID already exists. Patient NOT added.")

@@ -151,3 +151,139 @@
 # - Items and prices should stay together logically:
 #   if items or prices change, the total_price should be updated.
 
+#part1 
+orders = []   # This list stores ALL order dictionaries
+
+#part2 
+# ---------------------------------
+# 1. Ask for basic order information
+# ---------------------------------
+order_id = input("Order ID: ").strip()
+customer = input("Customer Name: ").strip().title()
+restaurant = input("Restaurant Name: ").strip().title()
+address = input("Delivery Address: ").strip()
+driver = input("Driver Name (or None): ").strip().title()
+status = input("Order Status (Placed / Preparing): ").strip().title()
+
+# ---------------------------------
+# 2 & 3. Ask for items and store them in a list
+# ---------------------------------
+items = []
+total_price = 0
+
+num_items = int(input("How many items in the order? "))
+
+for i in range(num_items):
+    item_name = input(f"Item {i+1} name: ").strip().title()
+    item_price = float(input(f"Item {i+1} price: "))
+
+    items.append(item_name)
+    total_price += item_price
+
+# ---------------------------------
+# 5. Create ONE dictionary for the order
+# ---------------------------------
+new_order = {
+    "order_id": order_id,
+    "customer": customer,
+    "restaurant": restaurant,
+    "address": address,
+    "driver": driver,
+    "status": status,
+    "items": items,
+    "total_price": total_price
+}
+
+# ---------------------------------
+# 8. Prevent duplicate Order IDs
+# ---------------------------------
+duplicate = any(order["order_id"] == order_id for order in orders)
+
+# ---------------------------------
+# 6 & 7. Append + confirmation
+# ---------------------------------
+if not duplicate:
+    orders.append(new_order)
+
+    print("\n✅ Order successfully added!")
+    print("Total number of orders:", len(orders))
+    print("New Order Details:")
+    print(new_order)
+else:
+    print("❌ ERROR: Order ID already exists. Order NOT added.")
+
+#part3 
+search = input("Enter Order ID or Customer Name: ").strip().title()
+found = False
+
+for order in orders:
+    if order["order_id"] == search or order["customer"] == search:
+        print("\nOrder Found:")
+        print(order)
+        found = True
+        break
+
+if not found:
+    print("❌ No matching order found.")
+
+#part4
+order_id = input("Enter Order ID to update: ").strip()
+
+for order in orders:
+    if order["order_id"] == order_id:
+        print("1. Update Status")
+        print("2. Update Driver")
+        print("3. Update Address")
+
+        choice = input("Choose an option: ")
+
+        if choice == "1":
+            order["status"] = input("New Status: ").strip().title()
+        elif choice == "2":
+            order["driver"] = input("New Driver Name: ").strip().title()
+        elif choice == "3":
+            order["address"] = input("New Address: ").strip()
+        else:
+            print("Invalid option.")
+
+        print("\n✅ Order updated:")
+        print(order)
+        break
+else:
+    print("❌ Order ID not found.")
+
+#part5
+restaurant_name = input("Enter restaurant name: ").strip().title()
+
+for order in orders:
+    if order["restaurant"] == restaurant_name:
+        print(order)
+
+status_filter = input("Enter status: ").strip().title()
+
+for order in orders:
+    if order["status"] == status_filter:
+        print(order)
+
+
+driver_name = input("Enter driver name: ").strip().title()
+
+for order in orders:
+    if order["driver"] == driver_name:
+        print(order)
+
+
+#part6 
+
+order_id = input("Enter Order ID to cancel: ").strip()
+
+for order in orders:
+    if order["order_id"] == order_id:
+        order["status"] = "Canceled"
+        print("\n❌ Order canceled:")
+        print(order)
+        break
+else:
+    print("❌ Order ID not found.")
+
+
